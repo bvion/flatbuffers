@@ -999,6 +999,8 @@ class TsGenerator : public BaseGenerator {
           std::string nullValue = "0";
           if (field.value.type.base_type == BASE_TYPE_BOOL) {
             nullValue = "false";
+          } else if (field.value.type.base_type == BASE_TYPE_ULONG) {
+            nullValue = "BigInt('0')";
           }
           ret += "(" + curr_member_accessor + " ?? " + nullValue + ")";
         } else {
